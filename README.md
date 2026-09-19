@@ -112,14 +112,3 @@ jupyter notebook Cancer_Clustering_corrected.ipynb
 
 Run **Kernel → Restart & Run All**. The notebook is verified to execute top-to-bottom with zero errors and sequential execution counts (1 → 17) against the dataset in `data/`.
 
-## Revision notes
-
-This notebook was rebuilt from an earlier draft that never actually analyzed the cancer data:
-
-- Removed the entire wholesale-customer detour — the earlier notebook silently swapped in an unrelated dataset partway through (see Revision Context) and never returned to the cancer data.
-- Fixed the hardcoded, machine-specific file path (`C:\Users\User\Downloads\cancer.csv`, which also didn't match the actual `.xlsx` source file) in favor of a relative `data/` path.
-- Removed a broken, argument-less `sns.histplot()` call that rendered an empty plot.
-- Added proper exploratory analysis, including an explicit multicollinearity check that motivates the PCA comparison.
-- Replaced an eyeballed cluster count with `K` selected by cross-validated-style silhouette sweep in two feature spaces.
-- Added a full model comparison (K-Means vs. Agglomerative × raw vs. PCA features) with both silhouette and Adjusted Rand Index against the real `diagnosis` label — the validation step the original notebook had no equivalent of, since it never used a dataset with a checkable ground truth in the first place.
-- Added a biological sanity-check section profiling clusters on their original feature scale, to confirm the statistical result reflects a real, interpretable distinction and not another artifact.
